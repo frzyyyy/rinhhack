@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="{% static 'teamwork/meetings_page.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+    <link rel="stylesheet" href="{% static 'teamwork/new.css' %}">
+
+    <title>Совещания • RNDS</title>
+</head>
+
+<body>
+      <img src="{% static 'teamwork/animation.gif' %}" alt="sidebar img" class="bg-image">
+      <div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-outline" data-cursor-outline></div>
+      <header class="header">
+         <div class="header__container container">
+            <div class="header__toggle" id="header-toggle">
+               <i class="ri-menu-line"></i>
+            </div>
+            <a href="{% url 'home' %}" class="header__logo">
+               <img src="{% static 'teamwork/RNDSOFT.svg' %}" alt="">
+            </a>
+         </div>
+      </header>
+      <div class="sidebar" id="sidebar">
+         <nav class="sidebar__container">
+            <div class="sidebar__content">
+               <div class="sidebar__list">
+                  <a href="{% url 'home' %}" class="sidebar__link active-link">
+                     <lord-icon src="https://cdn.lordicon.com/laqlvddb.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Главная</span>
+                     <span class="sidebar__link-floating">Главная</span>
+                  </a>
+               </div>
+               <h3 class="sidebar__title">
+                  <span>Основное</span>
+               </h3>
+               <div class="sidebar__list">
+                  <a href="{% url 'tasks' %}" class="sidebar__link">
+                     <lord-icon src="https://cdn.lordicon.com/ghhwiltn.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Задачи</span>
+                     <span class="sidebar__link-floating">Задачи</span>
+                  </a>
+                  <a href="{% url 'meetings' %}" class="sidebar__link">
+                     <lord-icon src="https://cdn.lordicon.com/wzrwaorf.json" trigger="hover" stroke="bold" state="hover-conversation-alt" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Совещания</span>
+                     <span class="sidebar__link-floating">Совещания</span>
+                  </a>
+                  <a href="{% url 'colleagues' %}" class="sidebar__link">
+                     <lord-icon src="https://cdn.lordicon.com/kndkiwmf.json" trigger="hover" stroke="bold" state="hover-roll" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Коллеги</span>
+                     <span class="sidebar__link-floating">Коллеги</span>
+                  </a>
+               </div>
+               <h3 class="sidebar__title">
+                  <span>Прочее</span>
+               </h3>
+               <div class="sidebar__list">
+                  <a href="{% url 'notifications' %}" class="sidebar__link">
+                     <lord-icon src="https://cdn.lordicon.com/ebjjjrhp.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Уведомления</span>
+                     <span class="sidebar__link-floating">Уведомления</span>
+                  </a>
+                  <a href="{% url 'settings' %}" class="sidebar__link">
+                     <lord-icon src="https://cdn.lordicon.com/jdalicnn.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#ffffff" style="width:27px;height:27px"></lord-icon>
+                     <span class="sidebar__link-name">Настройки</span>
+                     <span class="sidebar__link-floating">Настройки</span>
+                  </a>
+               </div>
+            </div>
+            <div class="sidebar__account">
+               <img src="{% static 'teamwork/QUESTION.png' %}" alt="sidebar image" class="sidebar__perfil">
+               <div class="sidebar__names">
+                  <a href="{% url 'account' %}">
+                  <h3 class="sidebar__name">Аккаунт</h3>
+                  <span class="sidebar__email">Войти</span>
+                   </a>
+               </div>
+                <i class="ri-arrow-right-s-line"><a href="{% url 'account' %}"></a></i>
+            </div>
+         </nav>
+      </div>
+      <main class="main container" id="main">
+         <h1>Совещания</h1>
+          <div class="taskbar">
+              <div class="taskbar_add">
+                  <h1>Создать совещание</h1>
+                  <button class="easybtn" id="myBtn"><i class="ri-add-line"></i></button>
+                    <div id="myModal" class="modal">
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form action="#" method="POST">
+                            <label>Название</label>
+                            <input type="text" name="name">
+                            <label>Категория</label>
+                            <input type="select" name="category">
+                            <label>Описание</label>
+                            <input type="text" name="description">
+                            <label>Сроки</label>
+                            <input type="date" name="date">
+                            <button type="submit" value="add">Создать</button>
+                        </form>
+                      </div>
+                    </div>
+                  <hr />
+              </div>
+              <div class="taskbar_join">
+                  <h1>Присоединиться к совещанию</h1>
+                  <button class="add_button"><i class="ri-add-line"></i></button>
+                  <hr />
+              </div>
+          </div>
+      </main>
+
+<script src="{% static 'teamwork/mainly.js' %}"></script>
+<script src="{% static 'teamwork/main.js' %}"></script>
+<script src="{% static 'teamwork/cursor.js' %}"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+</body>
+
+</html>

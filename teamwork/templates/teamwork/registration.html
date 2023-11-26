@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="{% static 'teamwork/registration_page.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'teamwork/web.css' %}">
+
+    <title>Регистрация • RNDS</title>
+</head>
+
+<body>
+<div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-outline" data-cursor-outline></div>
+      <section class="wrapper">
+      <div class="form signup">
+        <header>Регистрация</header>
+        <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" name="username" placeholder="Введите логин" value="{{ form.username.value|default_if_none:'' }}">
+          <input type="email" name="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" placeholder="Введите почту" value="{{ form.email.value|default_if_none:'' }}">
+          <input type="password" name="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}" placeholder="Введите пароль" value="{{ form.password.value|default_if_none:'' }}">
+          <input type="password" name="password_confirm" class="form-control {% if form.password_confirm.errors %}is-invalid{% endif %}" placeholder="Введите пароль снова" value="{{ form.password_confirm.value|default_if_none:'' }}">
+          <input type="file" name="icon" class="form-control {% if form.icon.errors %}is-invalid{% endif %}" value="{{ form.icon.value|default_if_none:'' }}">
+          <input type="submit" value="Создать аккаунт">
+          <a href="{% url 'authorization' %}">Уже создали аккаунт?</a>
+          <a href="{% url 'home' %}">Вернуться на главную страницу</a>
+        </form>
+      </div>
+      </section>
+<script src="{% static 'teamwork/cursor.js' %}"></script>
+
+</body>
+</html>
